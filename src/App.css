@@ -1,32 +1,83 @@
-.App {
-  text-align: center;
+html, body, #root {
+  height: 100%;
+  margin:0px;
+  line-height: 1.5;
+  background:#f9f9f9;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.library-title {
+  padding-top:3px;
+  padding-bottom : 3px;
+  background: #ffffff;
+  height : 50px;
+  width :100%;
+  position : relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.library-title h1 {
+  font-weight: 600;
+  left:100px;
+  margin: 0;
+  color:#170e42; 
+  position : absolute;
+  width : 50%;
 }
 
-.App-link {
-  color: #61dafb;
+
+.menu{
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(150px,auto);
+    margin : 2% 15%;
+    grid-gap: 0.5em;
+    grid-template-areas: 
+    "one four"
+    "two five"
+    "three six"
+    "seven seven"
+    "seven seven"
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (min-width : 760px){
+  .menu{
+    display : grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-auto-rows: minmax(175px,auto);
+    margin : 2% 15% ;
+    grid-gap: 0.5em;
+    grid-template-areas: 
+    "one four seven seven"
+    "two five seven seven"
+    "three six seven seven"
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
+.menu>div{
+  padding-top: 15px;
+}
+.card {
+  position : relative;
+  height : 100%;
+  width : 95%;
+  margin : auto;
+  border-radius: 2px;
+  background-color:#ffffff;
+  overflow:hidden;
+}
+
+.dot{
+  height: 75px;
+  width: 75px;
+  background-color: rgb(228, 216, 180,0.5);
+  border-radius: 50%;
+  display: block;
+  margin: 20px auto;
+}
+
+.card:hover{
+  cursor : pointer;
+}
+
+
+
+
+

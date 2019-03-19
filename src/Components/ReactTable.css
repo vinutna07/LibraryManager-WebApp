@@ -1,0 +1,23 @@
+.ReactTable{
+    margin-top:150px;
+    border:none;
+    background-color: #ffffff;
+}
+.ReactTable .rt-thead .rt-tr{
+    text-align:left;
+}
+
+.ReactTable .rt-thead.-header {
+    box-shadow: none;
+    color : #83B799;
+}
+
+.ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td{
+    padding : 15px 5px;
+    border-right :none;
+    box-shadow:none;
+}
+
+.ReactTable .rt-tbody .rt-td{
+    border-right : none;
+}

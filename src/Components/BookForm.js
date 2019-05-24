@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import SaveButton from './Buttons/SaveButton';
+import { Link } from 'react-router-dom';
 
 class BookForm extends Component {
     constructor(props) {
@@ -17,11 +18,9 @@ class BookForm extends Component {
             open: false,
             is_edit: false,
             showLoading: false,
-
         }
         this.handleChange = this.handleChange.bind(this);
     }
-
 
     componentDidMount() {
         const { book_id, title, author, total_num_of_books } = this.props.fill;
@@ -34,10 +33,8 @@ class BookForm extends Component {
 
     handleChange = (event) => {
         const { book_details } = this.state
-
         book_details[event.target.name] = event.target.value
         this.setState({ book_details })
-
     }
 
     addBook = (item) =>
@@ -53,10 +50,8 @@ class BookForm extends Component {
             } else {
                 alert("Book with the same ID exists. Try Again.")
             }
-
-           })
-        .catch((error) => {
-            console.log(error)
+        }).catch((error) => {
+                console.log(error)
         })
 
     updateBook = (item) =>
@@ -72,12 +67,10 @@ class BookForm extends Component {
             } else {
                 alert("Book with the same ID exists. Try Again.")
             }
-
-        })
-            .catch((error) => {
+        }).catch((error) => {
 
                 console.log(error)
-            })
+        })
 
     deleteBook = (item) =>
         fetch(`https://av9tfntp3h.execute-api.us-west-1.amazonaws.com/prod/books/` + item, {
@@ -92,9 +85,7 @@ class BookForm extends Component {
             } else {
                 alert("Delete unsuccessful. Try again!")
             }
-
-           })
-        .catch((error) => {
+        }).catch((error) => {
             alert("Delete unsuccessful. Try again!")
             console.log(error)
         })
@@ -102,7 +93,6 @@ class BookForm extends Component {
     handleSaveBookDetailsBtn = () => {
         this.state.is_edit ? this.updateBook(this.state.book_details) :
             this.addBook(this.state.book_details)
-
     }
 
 
@@ -110,17 +100,23 @@ class BookForm extends Component {
         if(window.confirm("Do you want to delete this book?")){
             this.deleteBook(this.state.book_details.book_id)
         }
-
     }
 
     render() {
-        const { book_details } = this.state;
-        return (
-            <div>
-                <ValidatorForm
-                    ref="form"
-                    onSubmit={this.handleAddBookBtn}>
-                    {!this.state.is_edit ? <TextValidator
+    const fieldStyle = {
+        'margin': '20px 0px',
+        'display': 'block'
+    }
+
+    const { book_details } = this.state;
+    return (
+        <div>
+        <div className= "formPaper">
+            {!this.state.is_edit ? <h2>Add New Book</h2> : <p></p>}
+            <ValidatorForm ref="form" >
+                {!this.state.is_edit ?
+                        <TextValidator
+                        style = {fieldStyle}
                         label="Book Code"
                         placeholder="ISBN"
                         name="book_id"
@@ -129,6 +125,7 @@ class BookForm extends Component {
                         validators={['required']} /> : <h2>Edit Book [ID: {this.state.book_details.book_id}]</h2>}
 
                     <TextValidator
+                        style={fieldStyle}
                         label="Title"
                         placeholder="Title"
                         name="title"
@@ -137,6 +134,7 @@ class BookForm extends Component {
                         validators={'required'} />
 
                     <TextValidator
+                    style={fieldStyle}
                         label="Author"
                         placeholder="Author"
                         name="author"
@@ -145,6 +143,7 @@ class BookForm extends Component {
                         validators={'required'} />
 
                     <TextValidator
+                    style={fieldStyle}
                         label="Total Books"
                         placeholder="Number of Books"
                         name="total_num_of_books"
@@ -161,6 +160,7 @@ class BookForm extends Component {
                     {this.state.showFormValidation && <p style={{ color: 'red' }}>{this.state.formErrorMessage} </p>}
                 </ValidatorForm>
             </div>
+        </div>
         );
     }
 }

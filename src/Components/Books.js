@@ -6,6 +6,7 @@ import BookForm from './BookForm'
 import EditIcon from '@material-ui/icons/Edit'
 import Loading from 'react-loading-bar'
 import 'react-loading-bar/dist/index.css'
+import { Link } from "react-router-dom";
 
 class Books extends React.Component {
     constructor() {
@@ -19,14 +20,11 @@ class Books extends React.Component {
         }
     }
 
-    getBooks = () =>{
-        
-        return(
-            fetch(`https://av9tfntp3h.execute-api.us-west-1.amazonaws.com/prod/books`)
-                .then(res => res.json())
-        )
+    getBooks = () =>
+        fetch(`https://av9tfntp3h.execute-api.us-west-1.amazonaws.com/prod/books`)
+            .then(res => res.json())
+    
 
-    }
 
     componentDidMount() {
         this.setState({ showLoading: true })
@@ -81,55 +79,82 @@ class Books extends React.Component {
         }
 
         return (
-            <div>
-                <Loading show={this.state.showLoading}
-                    color='#E86F68'/>
-                {this.state.formOpen ? <BookForm onClick={this.backToTable} fill={this.state.datarow} is_edit={this.state.is_edit} /> :
-                    <div>
-                        <button onClick={this.handleForm}>Add Book</button>
-                        <ReactTable
-                            data={this.state.data}
-                            columns={[
-                                {
-                                    Header: "Book Code",
-                                    accessor: "book_id",
-                                    className: "sticky",
-                                    headerClassName: "sticky"
-                                },
-                                {
-                                    Header: "Title",
-                                    accessor: "title",
-
-                                },
-                                {
-                                    Header: "Author",
-                                    accessor: "author"
-                                },
-                                {
-                                    Header: "Date Added",
-                                    accessor: "date_added"
-                                },
-                                {
-                                    Header: "Total Books",
-                                    accessor: "total_num_of_books"
-                                },
-                                {
-                                    Header: "Currently Available",
-                                    accessor: "current_num_of_books"
-                                },
-                                {
-                                    Header: 'Edit',
-                                    accessor: 'author', width: 200,
-                                    style: { cursor: 'pointer', textAlign: "center" },
-                                    Cell: pops => <div><EditIcon onClick={() => this.editBookHandler(pops, this.state.data)}
-                                        color="black" style={{ margin: 0 }} /></div>
-                                },
-                            ]}
-                            defaultPageSize={10}
-                        />
-                    </div>}
-                <br />
-            </div>
+          <div>
+            <Loading
+              show={this.state.showLoading}
+              color="#E86F68"
+              showSpinner={false}
+            />
+            {this.state.formOpen ? (
+              <BookForm
+                onClick={this.backToTable}
+                fill={this.state.datarow}
+                is_edit={this.state.is_edit}
+              />
+            ) : (
+              <div>
+                <Link className="backArrow" to="/" />
+                <h1>Books</h1>
+                  <button onClick={this.handleForm}>Add Book</button>
+                  <ReactTable
+                    data={this.state.data}
+                    columns={[
+                      {
+                        Header: "Book Code",
+                        accessor: "book_id",
+                        className: "sticky",
+                        headerClassName: "sticky"
+                      },
+                      {
+                        Header: "Title",
+                        accessor: "title"
+                      },
+                      {
+                        Header: "Author",
+                        accessor: "author"
+                      },
+                      {
+                        Header: "Date Added",
+                        accessor: "date_added"
+                      },
+                      {
+                        Header: "Total Books",
+                        accessor: "total_num_of_books"
+                      },
+                      {
+                        Header: "Currently Available",
+                        accessor: "current_num_of_books"
+                      },
+                      {
+                        Header: "Edit",
+                        accessor: "author",
+                        width: 200,
+                        style: {
+                          cursor: "pointer",
+                          textAlign: "center"
+                        },
+                        Cell: pops => (
+                          <div>
+                            <EditIcon
+                              onClick={() =>
+                                this.editBookHandler(
+                                  pops,
+                                  this.state.data
+                                )
+                              }
+                              color="black"
+                              style={{ margin: 0 }}
+                            />
+                          </div>
+                        )
+                      }
+                    ]}
+                    defaultPageSize={10}
+                  />
+                </div>
+            )}
+            <br />
+          </div>
         );
     }
 }

@@ -1,0 +1,19 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "library-manager-20190321015209-authRole",
+            "UnauthRoleArn": "arn:aws:iam::414508473382:role/library-manager-20190321015209-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::414508473382:role/library-manager-20190321015209-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "library-manager-20190321015209-deployment",
+            "UnauthRoleName": "library-manager-20190321015209-unauthRole",
+            "StackName": "library-manager-20190321015209",
+            "StackId": "arn:aws:cloudformation:us-west-2:414508473382:stack/library-manager-20190321015209/a4f0db10-4bb6-11e9-ba60-06ecc4f423c6"
+        },
+        "categories": {
+            "auth": {
+                "librarymanager": {}
+            }
+        }
+    }
+}

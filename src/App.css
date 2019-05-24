@@ -51,11 +51,12 @@ html, body, #root {
     "three six seven seven"
   }
 }
-.menu>div{
-  padding-top: 15px;
+
+.menu > div {
+  padding:5px;
 }
+
 .card {
-  position : relative;
   height : 100%;
   width : 95%;
   margin : auto;
@@ -70,14 +71,61 @@ html, body, #root {
   background-color: rgb(228, 216, 180,0.5);
   border-radius: 50%;
   display: block;
-  margin: 20px auto;
+  margin: 25px auto;
+  position:relative;
 }
 
 .card:hover{
   cursor : pointer;
 }
 
+.ButtonCardI {
+  height : 40%;
+  width : 95%;
+  margin : auto;
+  border-radius: 2px;
+  background-color:#E4D8B4;
+  overflow:hidden;
+  margin-top : 5%;
+}
 
+.ButtonCardR {
+  height : 40%;
+  width : 95%;
+  margin : auto;
+  border-radius: 2px;
+  margin-top:2.5%;
+  background-color:#E4D8B4;
+  overflow:hidden;
+  margin-bottom : 5%;
+}
+
+.backArrow {
+  display: block;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background-image: url('./arrow-back.svg');
+  color : #C2B28F;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0; 
+  border: none;
+  outline: none;
+} 
+
+.formPaper{
+  background : #ffffff;
+  width : 30%;
+  padding-top : 10px;
+  padding-bottom : 25px;
+  padding-right:25px;
+  padding-left:25px;
+  margin : auto;
+  margin-top : 5%;
+}
 
 
 

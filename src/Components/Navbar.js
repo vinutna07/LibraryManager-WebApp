@@ -31,7 +31,7 @@ class Navbar extends Component {
     const open = Boolean(anchorEl);
     return (
       <div className="library-title">
-        <h1>Library Manager</h1>
+        <h1>Library Manager - This App is bubu's</h1>
         <IconButton
           aria-owns={open ? "menu-appbar" : null}
           aria-haspopup="true"
